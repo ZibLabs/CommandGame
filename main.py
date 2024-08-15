@@ -42,6 +42,12 @@ thread.start()
 print()
 while True:
   USERinput = input()
+  if USERinput == "debugmode943":
+    MONEY = MONEY + 10000000000000
+    WIFI = 1000000
+    CPU = 1000000
+    RAM = 1000000
+    print("Debug mode enabled")
   if USERinput == "help":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -78,7 +84,7 @@ while True:
     print("Welcome to the Computer Store")
     print("You have", MONEY, "UNITS")
     print("UPGRADE SLOTS:", UsedUpgradeSlots, "Out of", MaxUpgradeSlots)
-    print("MORE RAM - 50 UNITS - INCREASES SPEED OF TEXT OUTPUT - TYPE RAM")
+    print("MORE RAM - 50 UNITS - INCREASES MAX MINING SOFTWARES ABLE TO RUN AT ONCE - TYPE RAM")
     print("BETTER CPU - 25 UNITS - COMPUTING COMMANDS RUN FASTER - TYPE CPU")
     print("BETTER WIFI CHIP     - 25 UNITS - NETWORK COMMANDS RUN FASTER - TYPE WIFI")
     print("BETTER MOTHERBOARD - 100 UNITS - MORE UPGRADE SLOTS - TYPE MOTHERBOARD")
@@ -197,7 +203,7 @@ while True:
 
         t = threading.Thread(target=animate)
         t.start()
-        time.sleep(5)
+        time.sleep(5 / WIFI)
         DoneNetScan = True
         print()
         time.sleep(0.2)
@@ -212,13 +218,52 @@ while True:
         while PasswordCracked == False:
           PassBrute = int(input())
           if PassBrute > RouterPassword:
+            RunningBrute = False
+            def animate():
+              for c in itertools.cycle(['|', '/', '-', '\\']):
+                  if RunningBrute:
+                      break
+                  sys.stdout.write('\rTESTING' + c)
+                  sys.stdout.flush()
+                  time.sleep(0.2)
+            l = threading.Thread(target=animate)
+            l.start()
+            time.sleep(5 / CPU)
+            RunningBrute = True
+            time.sleep(0.1)
             print("PASSWORD TOO HIGH")
           if PassBrute < RouterPassword:
+            RunningBrute = False
+            def animate():
+              for c in itertools.cycle(['|', '/', '-', '\\']):
+                  if RunningBrute:
+                      break
+                  sys.stdout.write('\rTESTING' + c)
+                  sys.stdout.flush()
+                  time.sleep(0.2)
+            l = threading.Thread(target=animate)
+            l.start()
+            time.sleep(5 / CPU)
+            RunningBrute = True
+            time.sleep(0.1)
             print("PASSWORD TOO LOW")
           if PassBrute == RouterPassword:
+            RunningBrute = False
+            def animate():
+              for c in itertools.cycle(['|', '/', '-', '\\']):
+                  if RunningBrute:
+                      break
+                  sys.stdout.write('\rTESTING' + c)
+                  sys.stdout.flush()
+                  time.sleep(0.2)
+            l = threading.Thread(target=animate)
+            l.start()
+            time.sleep(5 / CPU)
+            RunningBrute = True
+            time.sleep(0.1)
             print("YOU HAVE SUCCESSFULLY CRACKED THE NETWORK PASSWORD")
             PasswordCracked = True
-            print("to beta testers there will be more here to get units")
+            print("to beta testers, there will be more here to get units")
             IdleIncome = IdleIncome + 0.1
 
     
@@ -237,12 +282,15 @@ while True:
 
         t = threading.Thread(target=animate)
         t.start()
-        time.sleep(10)
+        time.sleep(10 / WIFI)
         DoneVPN = True
+        ScanSeed1 = random.randrange(1,255)
+        ScanSeed2 = random.randrange(1,255)
+        ScanSeed3 = random.randrange(1,255)
+        ScanSeed4 = random.randrange(1,255)
+        RANDIP = str(ScanSeed1) + "." + str(ScanSeed2) + "." + str(ScanSeed3) + "." + str(ScanSeed4)
         print()
         time.sleep(0.2)
-        print("IP FOUND")
-        print(RANDIP)
         print()
       
  
