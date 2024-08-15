@@ -6,6 +6,7 @@ import time
 
 print("Hello welcome to Command Game")
 print("type help for get started.")
+global MONEY
 MONEY = 0
 UsedUpgradeSlots = 0
 MaxUpgradeSlots = 3
@@ -19,11 +20,24 @@ MOTHERBOARDUpgrades = 0
 MOTHERBOARD = 1
 BRUTE = 0
 BRUTEv1ISLOCKED = True
+IdleIncome = 0
 ScanSeed1 = random.randrange(1,255)
 ScanSeed2 = random.randrange(1,255)
 ScanSeed3 = random.randrange(1,255)
 ScanSeed4 = random.randrange(1,255)
 RANDIP = str(ScanSeed1) + "." + str(ScanSeed2) + "." + str(ScanSeed3) + "." + str(ScanSeed4)
+
+def background_code():
+  while True:
+    global MONEY
+    MONEY = MONEY + IdleIncome
+    time.sleep(1)
+
+thread = threading.Thread(target=background_code, args=(), kwargs={})
+thread.start()
+
+
+
 
 print()
 while True:
@@ -204,8 +218,32 @@ while True:
           if PassBrute == RouterPassword:
             print("YOU HAVE SUCCESSFULLY CRACKED THE NETWORK PASSWORD")
             PasswordCracked = True
-        
-        
+            print("to beta testers there will be more here to get units")
+            IdleIncome = IdleIncome + 0.1
+
+    
+      if USERinput == "switch":
+        print("SWITCHING TO NEW VPN")
+        DoneVPN = False
+        def animate():
+            for c in itertools.cycle(['|', '/', '-', '\\']):
+                if DoneVPN:
+                    break
+                sys.stdout.write('\rSCANNING' + c)
+                sys.stdout.flush()
+                time.sleep(0.2)
+            sys.stdout.write('\rDone!     ')
 
 
+        t = threading.Thread(target=animate)
+        t.start()
+        time.sleep(10)
+        DoneVPN = True
+        print()
+        time.sleep(0.2)
+        print("IP FOUND")
+        print(RANDIP)
+        print()
+      
+ 
     exit
