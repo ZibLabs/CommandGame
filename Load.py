@@ -158,10 +158,10 @@ while True:
       if USERinput == "exit":
         print("Welcome back to the home screen")
         break
-        
+
       if USERinput == "scan":
         print("SCANNING NETWORK")
         time.sleep(10)
-        
+
 
     exit
