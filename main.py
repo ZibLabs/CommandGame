@@ -54,11 +54,11 @@ while True:
     print("help - shows this message")
     print("tut - starts or restarts tutorial(TBI)")
     print("credits - shows credits")
-    print("store - opens the store page")
+    print("store - opens the hardware store")
     print("upgrades - opens the upgrades page")
     print("skills - opens the skill tree(TBI)")
     print("command - opens the command line")
-    print("TBI - to be implimented")
+    print("appstore - opens the software store")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
   if USERinput == "tut":
@@ -84,7 +84,7 @@ while True:
     print("Welcome to the Computer Store")
     print("You have", MONEY, "UNITS")
     print("UPGRADE SLOTS:", UsedUpgradeSlots, "Out of", MaxUpgradeSlots)
-    print("MORE RAM - 50 UNITS - INCREASES MAX MINING SOFTWARES ABLE TO RUN AT ONCE - TYPE RAM")
+    print("MORE RAM - 50 UNITS - MAKES BRUTE MORE EFFIECIENT - TYPE RAM")
     print("BETTER CPU - 25 UNITS - COMPUTING COMMANDS RUN FASTER - TYPE CPU")
     print("BETTER WIFI CHIP     - 25 UNITS - NETWORK COMMANDS RUN FASTER - TYPE WIFI")
     print("BETTER MOTHERBOARD - 100 UNITS - MORE UPGRADE SLOTS - TYPE MOTHERBOARD")
@@ -154,8 +154,11 @@ while True:
           print("you bought a BRUTE upgrade")
           MONEY = MONEY - 50
           BRUTE = BRUTE + 1
+          BRUTEv1ISLOCKED = False
           print("You now have", MONEY, "UNITS")
           print("You now have NETWORK BRUTING SOFTWARE V1")
+        else:
+          print("YOU ALREADY OWN V1")
       else:
         print("NOT ENOUGH UNITS")
     continue
@@ -212,7 +215,7 @@ while True:
         print()
         RouterPassword = random.randrange(1,100)
         
-      if USERinput == "brute " + RANDIP:
+      if USERinput == "brute " + RANDIP and BRUTEv1ISLOCKED is True:
         print("Begin Manual Brute 1-100")
         PasswordCracked = False
         while PasswordCracked == False:
@@ -265,6 +268,30 @@ while True:
             PasswordCracked = True
             print("to beta testers, there will be more here to get units")
             IdleIncome = IdleIncome + 0.1
+
+      
+      if USERinput == "brute " + RANDIP and BRUTEv1ISLOCKED is False:
+        PassBrute = 50
+        print("Begin Automatic Brute 1-100")
+        PasswordCracked = False
+        PassBrute = 50
+        while PasswordCracked == False:
+          if PassBrute > RouterPassword:
+            PassBrute = PassBrute - 5
+            time.sleep(0.5)
+            print(PassBrute)
+          if PassBrute < RouterPassword:
+            PassBrute = PassBrute + 9
+            time.sleep(0.5)
+            print(PassBrute)
+          if PassBrute == RouterPassword:
+            print("YOU HAVE SUCCESSFULLY CRACKED THE NETWORK PASSWORD")
+            PasswordCracked = True
+            print("to beta testers, there will be more here to get units")
+            IdleIncome = IdleIncome + 0.1
+            break
+            
+            
 
     
       if USERinput == "switch":
