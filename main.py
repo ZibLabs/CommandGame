@@ -11,8 +11,8 @@ WIFIUpgrades = 0
 WIFI = 1
 MOTHERBOARDUpgrades = 0
 MOTHERBOARD = 1
-CRACKER = 0
-CRACKERv1ISLOCKED = True
+BRUTE = 0
+BRUTEv1ISLOCKED = True
 print()
 while True:
   USERinput = input()
@@ -56,7 +56,7 @@ while True:
     print("BETTER CPU - 25 UNITS - COMPUTING COMMANDS RUN FASTER - TYPE CPU")
     print("BETTER WIFI CHIP     - 25 UNITS - NETWORK COMMANDS RUN FASTER - TYPE WIFI")
     print("BETTER MOTHERBOARD - 100 UNITS - MORE UPGRADE SLOTS - TYPE MOTHERBOARD")
-    print("CRACKING SOFTWARE - 50 UNITS - ALLOWS YOU TO CRACK SIMPLE NETWORK PASSWORDS AUTOMATICALLY - TYPE CRACKER")
+    print("BRUTE SOFTWARE V1 - 50 UNITS - ALLOWS YOU TO CRACK SIMPLE NETWORK PASSWORDS AUTOMATICALLY - TYPE BRUTE")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     storeinput = input()
     if storeinput == "RAM":
@@ -116,15 +116,14 @@ while True:
         print("You now have", MONEY, "UNITS")
         print("You now have a V", MOTHERBOARD, "MOTHERBOARD")
 
-    if storeinput == "CRACKER":
+    if storeinput == "BRUTE":
       if MONEY >= 50:
-        if CRACKERv1ISLOCKED == True:
-          print("you bought a CRACKER upgrade")
+        if BRUTEv1ISLOCKED == True:
+          print("you bought a BRUTE upgrade")
           MONEY = MONEY - 50
-          CRACKER = CRACKER + 1
-          CRACKERv1ISLOCKED = False
+          BRUTE = BRUTE + 1
           print("You now have", MONEY, "UNITS")
-         print("You now have NETWORK CRACKING SOFTWARE V1")
+          print("You now have NETWORK BRUTING SOFTWARE V1")
       else:
         print("NOT ENOUGH UNITS")
     continue
@@ -137,6 +136,7 @@ while True:
     print("WIFI CHIP: V", WIFI, "- UPGRADES DONE TO WIFI:", WIFIUpgrades)
     print("MOTHBOARD: V", MOTHERBOARD, "- UPGRADES DONE TO MOTHERBOARD:",
           MOTHERBOARDUpgrades)
+    print("BRUTE SOFTWARE: V", BRUTE, "- UPGRADES DONE TO BRUTE:")
     print("TO SELL UPGRADES TYPE SELL AND THEN UPGRADE YOU WANT TO SELL")
     print("UPGRADE SLOTS:", UsedUpgradeSlots, "Out of", MaxUpgradeSlots)
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
