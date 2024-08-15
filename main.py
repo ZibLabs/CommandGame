@@ -1,9 +1,12 @@
+import itertools
 import random
+import sys
+import threading
 import time
 
 print("Hello welcome to Command Game")
 print("type help for get started.")
-MONEY = 1002
+MONEY = 0
 UsedUpgradeSlots = 0
 MaxUpgradeSlots = 3
 RAM = 1
@@ -16,6 +19,12 @@ MOTHERBOARDUpgrades = 0
 MOTHERBOARD = 1
 BRUTE = 0
 BRUTEv1ISLOCKED = True
+ScanSeed1 = random.randrange(1,255)
+ScanSeed2 = random.randrange(1,255)
+ScanSeed3 = random.randrange(1,255)
+ScanSeed4 = random.randrange(1,255)
+RANDIP = str(ScanSeed1) + "." + str(ScanSeed2) + "." + str(ScanSeed3) + "." + str(ScanSeed4)
+
 print()
 while True:
   USERinput = input()
@@ -55,7 +64,7 @@ while True:
     print("Welcome to the Computer Store")
     print("You have", MONEY, "UNITS")
     print("UPGRADE SLOTS:", UsedUpgradeSlots, "Out of", MaxUpgradeSlots)
-    print("MORE RAM - 50 UNITS - HAVE ONE MORE COMMAND RUNNING AT ONCE - TYPE RAM")
+    print("MORE RAM - 50 UNITS - INCREASES SPEED OF TEXT OUTPUT - TYPE RAM")
     print("BETTER CPU - 25 UNITS - COMPUTING COMMANDS RUN FASTER - TYPE CPU")
     print("BETTER WIFI CHIP     - 25 UNITS - NETWORK COMMANDS RUN FASTER - TYPE WIFI")
     print("BETTER MOTHERBOARD - 100 UNITS - MORE UPGRADE SLOTS - TYPE MOTHERBOARD")
@@ -158,10 +167,45 @@ while True:
       if USERinput == "exit":
         print("Welcome back to the home screen")
         break
-        
+
       if USERinput == "scan":
-        print("SCANNING NETWORK")
-        time.sleep(10)
+        print("SCANNING FOR OPEN IP")
+        DoneNetScan = False
+        def animate():
+            for c in itertools.cycle(['|', '/', '-', '\\']):
+                if DoneNetScan:
+                    break
+                sys.stdout.write('\rSCANNING' + c)
+                sys.stdout.flush()
+                time.sleep(0.2)
+            sys.stdout.write('\rDone!     ')
+            
+
+        t = threading.Thread(target=animate)
+        t.start()
+        time.sleep(5)
+        DoneNetScan = True
+        print()
+        time.sleep(0.2)
+        print("IP FOUND")
+        print(RANDIP)
+        print()
+        RouterPassword = random.randrange(1,100)
         
+      if USERinput == "brute " + RANDIP:
+        print("Begin Manual Brute 1-100")
+        PasswordCracked = False
+        while PasswordCracked == False:
+          PassBrute = int(input())
+          if PassBrute > RouterPassword:
+            print("PASSWORD TOO HIGH")
+          if PassBrute < RouterPassword:
+            print("PASSWORD TOO LOW")
+          if PassBrute == RouterPassword:
+            print("YOU HAVE SUCCESSFULLY CRACKED THE NETWORK PASSWORD")
+            PasswordCracked = True
+        
+        
+
 
     exit
