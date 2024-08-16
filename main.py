@@ -7,7 +7,7 @@ import time
 print("Hello welcome to Command Game")
 print("type help for get started.")
 global MONEY
-MONEY = 0
+MONEY = 1
 UsedUpgradeSlots = 0
 MaxUpgradeSlots = 3
 RAM = 1
@@ -48,6 +48,8 @@ while True:
     CPU = 1000000
     RAM = 1000000
     print("Debug mode enabled")
+  if USERinput == "debugbrute":
+    BRUTEv1ISLOCKED = False
   if USERinput == "help":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -72,12 +74,28 @@ while True:
     print("Game made by: GZ")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
-  if USERinput == "tbi":
+  if USERinput == "appstore":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("I told you it was To Be Implimented")
+    print("To Be Implimented Fully May Or May Not Do anything")
+    print("BRUTE SOFTWARE V1 - 50 UNITS - ALLOWS YOU TO CRACK SIMPLE NETWORK PASSWORDS AUTOMATICALLY - TYPE BRUTE")
+    print("BETTER VPN - 100 UNITS - ALLOWS YOU TO ACCESS TO THE DARKWEB STORE - TYPE VPN")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
+    appinput = input()
+    if appinput == "BRUTE":
+      if MONEY >= 50:
+        if BRUTEv1ISLOCKED == True:
+          print("you bought a BRUTE upgrade")
+          MONEY = MONEY - 50
+          BRUTE = BRUTE + 1
+          BRUTEv1ISLOCKED = False
+          print("You now have", MONEY, "UNITS")
+          print("You now have NETWORK BRUTING SOFTWARE V1")
+        else:
+          print("YOU ALREADY OWN V1")
+      else:
+        print("NOT ENOUGH UNITS")
   if USERinput == "store":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -88,7 +106,6 @@ while True:
     print("BETTER CPU - 25 UNITS - COMPUTING COMMANDS RUN FASTER - TYPE CPU")
     print("BETTER WIFI CHIP     - 25 UNITS - NETWORK COMMANDS RUN FASTER - TYPE WIFI")
     print("BETTER MOTHERBOARD - 100 UNITS - MORE UPGRADE SLOTS - TYPE MOTHERBOARD")
-    print("BRUTE SOFTWARE V1 - 50 UNITS - ALLOWS YOU TO CRACK SIMPLE NETWORK PASSWORDS AUTOMATICALLY - TYPE BRUTE")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     storeinput = input()
     if storeinput == "RAM":
@@ -147,20 +164,6 @@ while True:
         MaxUpgradeSlots = MOTHERBOARD + 3
         print("You now have", MONEY, "UNITS")
         print("You now have a V", MOTHERBOARD, "MOTHERBOARD")
-
-    if storeinput == "BRUTE":
-      if MONEY >= 50:
-        if BRUTEv1ISLOCKED == True:
-          print("you bought a BRUTE upgrade")
-          MONEY = MONEY - 50
-          BRUTE = BRUTE + 1
-          BRUTEv1ISLOCKED = False
-          print("You now have", MONEY, "UNITS")
-          print("You now have NETWORK BRUTING SOFTWARE V1")
-        else:
-          print("YOU ALREADY OWN V1")
-      else:
-        print("NOT ENOUGH UNITS")
     continue
   if USERinput == "upgrades":
     print()
@@ -191,7 +194,7 @@ while True:
         print("Welcome back to the home screen")
         break
 
-      if USERinput == "scan":
+      if USERinput == "netscan":
         print("SCANNING FOR OPEN IP")
         DoneNetScan = False
         def animate():
