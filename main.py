@@ -66,7 +66,7 @@ while True:
   if USERinput == "tut":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("tutorial yet to be imlimented figure it out I guess")
+    print("tutorial will be added in next version"
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   if USERinput == "credits":
     print()
@@ -79,7 +79,7 @@ while True:
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("To Be Implimented Fully May Or May Not Do anything")
     print("BRUTE SOFTWARE V1 - 50 UNITS - ALLOWS YOU TO CRACK SIMPLE NETWORK PASSWORDS AUTOMATICALLY - TYPE BRUTE")
-    print("BETTER VPN - 100 UNITS - ALLOWS YOU TO ACCESS TO THE DARKWEB STORE - TYPE VPN")
+    print("BETTER VPN - 100 UNITS - ALLOWS YOU TO ACCESS TO THE DARKWEB STORE - TYPE VPN - does nothing as of now")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
     appinput = input()
