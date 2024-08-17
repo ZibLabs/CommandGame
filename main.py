@@ -66,7 +66,7 @@ while True:
   if USERinput == "tut":
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("tutorial will be added in next version"
+    print("tutorial will be added in next version")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   if USERinput == "credits":
     print()
